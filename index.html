@@ -25,13 +25,17 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let audio = document.getElementById("bg-music");
-            
-            // Intenta reproducir el audio
-            audio.play().catch(error => {
-                console.log("El autoplay está bloqueado. Se necesita interacción del usuario.");
-            });
     
-            // Agrega un evento para que al hacer clic en cualquier parte de la página, comience el audio
+            // Intentar reproducir el audio
+            let playPromise = audio.play();
+    
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay bloqueado. Se necesita interacción del usuario.");
+                });
+            }
+    
+            // Reproducir cuando el usuario haga clic en la página
             document.addEventListener("click", function() {
                 audio.play();
             });
