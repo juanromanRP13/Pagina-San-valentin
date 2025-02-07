@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio autoplay loop>
+    <audio id="bg-music" loop>
         <source src="audio.mp3" type="audio/mpeg">
-        tonto
+        Tu navegador no soporta audio.
     </audio>
     <div class="container">
         <h1>Quieres ser mi San Valentin?</h1>
@@ -22,5 +22,13 @@
                </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let audio = document.getElementById("bg-music");
+            audio.play().catch(error => {
+                console.log("El autoplay está bloqueado. El usuario debe interactuar.");
+            });
+        });
+    </script>
 </body>
 </html>
